@@ -1,0 +1,10 @@
+LoadPlugin("../Avisynth/plugins64/GetSystemEnv.dll")
+setMemorymax(8192)
+film_1 = GetSystemEnv("input_1")
+film_2 = GetSystemEnv("input_2")
+source_1= AviSource(film_1,audio=false).assumefps(16).converttoYV12()
+source_2= AviSource(film_2,audio=false).assumefps(16).converttoYV12()
+compare= stackhorizontal(subtitle(source_1,film_1,size=28,align=2),subtitle(source_2,film_2,size=28,align=2))
+Eval("compare")
+Prefetch(8)
+

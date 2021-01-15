@@ -1,0 +1,3 @@
+#Clip list 
+file 'M:\magis\join\38_01.avi' 
+file 'M:\magis\join\38_02.avi' 
