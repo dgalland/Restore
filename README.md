@@ -78,7 +78,18 @@ Mkvtoolnix  (mkvmerge pour créer des fichier mkv)
 
 https://www.fosshub.com/MKVToolNix.html
 
-Dans le répertoire "Avisynth Universal installer", exécuter en mode administrateur la procédure setavs et choisir Avisynth + en mode 32 bits et 64 bits
+## Installation de avisynth
+
+Ouvrir une fenêtre de commande en mode administrateurDans le répertoire "Avisynth Universal installer", exécuter la procédure setavs et choisir Avisynth + en mode 32 bits et 64 bits
+
+```
+cd c:\restore\tools\AvisynthRepository
+setavs
+```
+
+
+
+Dans le répertoire "Avisynth Universal installer", exécuter la procédure setavs et choisir Avisynth + en mode 32 bits et 64 bits
 
 ## Conception des scripts
 
@@ -87,19 +98,26 @@ Dans scripts éditer la procédure setup
 %TOOLS% 	Localisation du répertoire Tools
 %ROOT%   	Localisation du répertoire de vos films
 
-Vérifier le chemin des exécutables.
+Ouvrir une fenêtre de commande et exécuter la procédure setup
 
-Dans une fenêtre de commande exécuter la procédure setup
+```
+cd c:\restore\scripts
+setup
+```
+
+Tous les exécutables sont appelés une fois pour vérification, il ne doit pas y avoir d'erreur.
+
+Ensuite tous les scripts seront exécuté dans cette fenêtre toujours en restant dans le répertoire scripts
 
 La restauration est conçues en étapes, le résultat de chaque étape devient la source pour l'étape suivante.
 
-Par exemple
+Par exemple :
 
 ```
-do clean concat 02
+do deshake concat 02
 ```
 
-va exécuter les scripts de cleaning pour le film 02 dans le répertoire concat, le résultat dans le répertoire clean
+va exécuter les scripts de deshake  pour le film 02 dans le répertoire concat, le résultat dans le répertoire deshake
 
 Les noms de étapes sont à votre convenance, vous pouvez partir des étapes fournies mais en ajouter d'autres
 
@@ -189,7 +207,13 @@ do concat 01 01_01 01_02
 Il existe des plugins de deshake pour avisynth. Le plugin deshaker de Virtualdub donne un meilleur résultat pour le traitement des borders qui résultent de la stabilisation:
 
 ```
-do deshake join 01
+do deshake concat 01
+```
+
+ou bien sans concatenation
+
+```
+do deshake join 01_01
 ```
 
 Le traitement  virtualdub est un peu plus complexe car deux passes sont nécessaires, les deux fichiers pass1-template.vdscript et pass2-template.vdscript contiennent les settings de la pass 1 et pass2 du deshaker.

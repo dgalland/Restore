@@ -6,10 +6,10 @@ echo VirtualDub.Open(U"%input%"^); > pass1.vdscript
 type pass1-template.vdscript >> "pass1.vdscript"
 echo VirtualDub.RunNullVideoPass(^);	>> "pass1.vdscript"
 echo Pass One
-%VDUB64% /i pass1.vdscript m:\tmp\log /x
+%VDUB64% /i pass1.vdscript %TMP%\%3.log /x
 
 echo VirtualDub.Open(U"%input%"^); > pass2.vdscript
 type pass2-template.vdscript >> pass2.vdscript
 echo VirtualDub.SaveAVI(U"%output%"^); >> pass2.vdscript
 echo Pass Two
-%VDUB64% /i pass2.vdscript /x
+%VDUB64% /i pass2.vdscript %TMP%\%3.log /x
