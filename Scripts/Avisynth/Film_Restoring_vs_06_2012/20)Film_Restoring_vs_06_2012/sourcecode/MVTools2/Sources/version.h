@@ -1,0 +1,3 @@
+#define FILEVERSION_VAL 2,4,2
+#define FILEVERSION_STR "2.4.2"
+

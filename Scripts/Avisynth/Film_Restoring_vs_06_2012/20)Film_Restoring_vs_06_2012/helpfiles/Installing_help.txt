@@ -1,0 +1,111 @@
+==============================================================================
+film restoring script by videoFred.
+june 2012
+www.super-8.be
+info@super-8.be
+==============================================================================
+
+Script thread:
+http://forum.doom9.org/showthread.php?t=144271
+==============================================
+
+
+
+How to install the film restoring script and the plugins.
+=========================================================
+
+
+1) Create a special folder for the scripts and plugins only.
+
+2) Unpack the zipfile to this folder
+
+
+You should now have the following subfolders:
+===============================================
+
+HELPFILES
+SCRIPTS
+SOURCECODE
+
+
+In the "scripts" folder you will find 5 scripts:
+================================================
+
+
+01_A_Film_Restoring_Frame_Interpolation.avs
+--------------------------------------------
+
+This is the main script with all options.
+
+
+01_B_Film_Restoring_Frame_Blending.avs
+--------------------------------------
+
+This is the same script, but with frame blending instead of frame interpolation.
+This can be useful for films with fast moving objects.
+Because interpolation sometimes gives artefacts on high motion scenes.
+
+
+01_C_Film_Restoring_Blending_Cleaning_only.avs
+-----------------------------------------------
+
+This script is using the RemoveDirtMC cleaning, but no degraining afterwards.
+It is using blending instead of interpolation too.
+It will render a lot faster, and the end result will leave some filmgrain.
+For those who like the specific 'film' look.
+
+
+01_D_Film_Restoring_Blending_No_Cleaning.avs
+---------------------------------------------
+
+This script will render very fast.
+It can be used for fast resizing, cropping, stabilizing, and levels and color tweaking.
+There will be no cleaning and no degraining.
+
+
+
+01_E_Stabilisation_Only.avs
+============================
+
+This script does stabilisation almost in real time.
+It is very useful to test the stabilising parameters.
+The result is the same as "ResultS7" in the other scripts.
+
+
+
+ATTENTION:
+==========
+
+For some reason fftw3.dll can not be placed in the "plugins" folder.
+fftw3.dll must be together with the scripts in the same folder, otherwise it will not work.
+fftw3.dll is used by Depan.
+
+
+
+The "scripts" folder should have a subfolder named "plugins"
+============================================================
+
+inside this subfolder should be:
+-----------------------------------
+
+03_RemoveDirtMC.avs
+autolevels_06.dll
+Deflicker.dll
+Depan.dll
+DepanEstimate.dll
+Motion_06Dec05B.dll
+MVTools.dll
+MVTools2.dll
+RemoveDirt.dll
+RemoveGrain.dll
+Warpsharp.dll
+
+
+==================
+Enjoy the script!
+
+Fred.
+===================
+
+
+

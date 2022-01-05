@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C++ Express 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "..\..\common\build\common.vcproj", "{DBFBE277-5B8D-4258-B522-13146FD1E722}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "masktools", "masktools.vcproj", "{185396D8-57BD-4DDF-8CD3-26035EA50DB9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DBFBE277-5B8D-4258-B522-13146FD1E722} = {DBFBE277-5B8D-4258-B522-13146FD1E722}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		debug-avs25|Win32 = debug-avs25|Win32
+		debug-avs26|Win32 = debug-avs26|Win32
+		release-avs25|Win32 = release-avs25|Win32
+		release-avs26|Win32 = release-avs26|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.debug-avs25|Win32.ActiveCfg = debug-avs25|Win32
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.debug-avs25|Win32.Build.0 = debug-avs25|Win32
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.debug-avs26|Win32.ActiveCfg = debug-avs26|Win32
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.debug-avs26|Win32.Build.0 = debug-avs26|Win32
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.release-avs25|Win32.ActiveCfg = release-avs25|Win32
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.release-avs25|Win32.Build.0 = release-avs25|Win32
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.release-avs26|Win32.ActiveCfg = release-avs26|Win32
+		{DBFBE277-5B8D-4258-B522-13146FD1E722}.release-avs26|Win32.Build.0 = release-avs26|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.debug-avs25|Win32.ActiveCfg = debug-avs25|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.debug-avs25|Win32.Build.0 = debug-avs25|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.debug-avs26|Win32.ActiveCfg = debug-avs26|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.debug-avs26|Win32.Build.0 = debug-avs26|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.release-avs25|Win32.ActiveCfg = release-avs25|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.release-avs25|Win32.Build.0 = release-avs25|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.release-avs26|Win32.ActiveCfg = release-avs26|Win32
+		{185396D8-57BD-4DDF-8CD3-26035EA50DB9}.release-avs26|Win32.Build.0 = release-avs26|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

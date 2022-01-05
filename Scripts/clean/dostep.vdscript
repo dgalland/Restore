@@ -24,4 +24,4 @@ VirtualDub.video.filters.BeginUpdate();
 VirtualDub.video.filters.Clear();
 VirtualDub.video.filters.EndUpdate();
 VirtualDub.audio.filters.Clear();
-VirtualDub.SaveAVI(U"d:\RestoreGit\Films\clean\02_01.avi"); 
+VirtualDub.SaveAVI(U"d:\Restore\Films\clean\01.avi"); 

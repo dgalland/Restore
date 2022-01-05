@@ -1,0 +1,71 @@
+==============================================================================
+film to digital transfer system by videoFred.
+june 2012
+www.super-8.be
+info@super-8.be
+==============================================================================
+
+Film restoring script thread:
+http://forum.doom9.org/showthread.php?t=144271
+==============================================
+
+As you all might know, I'm using machine vision camera's with trigger input for transfering 8mm films to digital.
+Until now, I was using an Imaging Source 1024 x 768 pixels camera.
+But soon I'm going to upgrade to an IMI 1388 x 1036 camera.
+With this camera, it is possible to crop a 1388 x 1036 digital film capturing to 720p without resizing.
+With borders, to have the full frame, or without borders but then we are losing parts from the top and the bottom of the frame.
+And the 720p HD format is more than enough for the 8mm film format.
+
+
+
+For the film transport, I'm using modified film projectors.
+
+The shutter blades and the original lens from the projector are removed.
+The original AC motor is replaced by a DC motor. Speed is PWM regulated.
+
+The camera is mounted on the projector, and it is "looking" straight to the film plane, with a macro zoom lens.
+For now, I'm using a Computar MLM-3XMP 0.3x -1x 1:45 WD90 (C-mount)
+
+
+This is, in short,  how the system works:
+
+-There is an optical switch (lightvalve) inside the projector to detect when a new frame arrives in the gate.
+-At this point, the frame stands still for a short time.
+-The switch sends a pulse to the camera trigger.
+
+-The camera runs internal at a certain framerate, but it grabs one (not debayered) frame and send it to the computer over the fire-wire connection.
+-The software grabs this frame, debayer it in real time, and add it to a "growing" AVI file. 
+
+The benefit of this system is that you always have a frame accurate capturing, no matter the speed of the film projector.
+The only limit for the speed is the internal frame rate of the camera and the recording speed of the computer harddisk.
+I can capture 1024x768 uncompressed RGB24 at 15fps without any dropped frames, on my new 8-core HP computer.
+I have an second internal harddisk, reservated for film capturings only.
+
+To hide scrathes, I have developed a little tool for wetgate scanning.
+It also cleans the film, and it keeps dirt and hair away from the film gate.
+Old dirt spots are very difficult to remove but the RemoveDirtMC() plugin in my film restoring script is removing nearly all of them.
+With the wetgate and the script afterwards, 50 years old films are looking like brandnew.
+
+
+
+For the backlight, I was using white power Leds, at full brightness.
+But I am rebuilding the system for using Frank Vine's special developed CFLed system.
+This is a very advanced RGB Led system, it can communicate with the camera and with the special software Frank has written.
+You can read all about it here: www.cine2digits.co.uk
+
+For the software, I'm using Frank's custom made D2D app.
+
+The next stage is to combine the Led control software with the capturing software.
+This way, a nearly perfect auto white balance will be possible.
+We are testing it right now.
+
+As soon as everything works, I will update my super-8 website.
+But I do this all in my free time.. this will be something for 2013.
+
+In the mean time.. enjoy the film restoring scripts!
+
+Fred.
+
+
+
+

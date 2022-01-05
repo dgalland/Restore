@@ -24,4 +24,4 @@ VirtualDub.video.filters.BeginUpdate();
 VirtualDub.video.filters.Clear();
 VirtualDub.video.filters.EndUpdate();
 VirtualDub.audio.filters.Clear();
-VirtualDub.SaveAVI(U"M:\magis\compare\test.avi"); 
+VirtualDub.SaveAVI(U"d:\Restore\Films\compare\03.avi"); 

@@ -1,0 +1,28 @@
+#define VS_VERSION_INFO 1
+#include "version.h"
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION FILEVERSION_VAL
+PRODUCTVERSION 2,5
+FILEOS 0x00040004
+FILETYPE 0x00000002
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040004B0"
+    BEGIN
+      VALUE "Comments", "Motion estimation and compensation\0"
+      VALUE "CompanyName", "A.G.Balakhnin aka Fizick, fizick2@avisynth.org.ru\0"
+      VALUE "FileDescription", "MVTools plugin for AviSynth \0"
+      VALUE "FileVersion", FILEVERSION_STR
+      VALUE "InternalName", "mvtools\0"
+      VALUE "LegalCopyright", "©2004 Manao, ©2005 Fizick, ©2008 TSchniede under GNU GPL v2\0"
+      VALUE "OriginalFilename", "mvtools.dll\0"
+      VALUE "ProductName", "mvtools\0"
+      VALUE "ProductVersion", "2, 5\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0400, 0x04B0
+  END
+END

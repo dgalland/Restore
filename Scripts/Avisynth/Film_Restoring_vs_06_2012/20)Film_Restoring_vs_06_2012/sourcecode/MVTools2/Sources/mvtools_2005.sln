@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C++ Express 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvtools", "mvtools_2005.vcproj", "{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Basic_no_opt2005|Win32 = Basic_no_opt2005|Win32
+		Debug2005|Win32 = Debug2005|Win32
+		Release2005|Win32 = Release2005|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Basic_no_opt2005|Win32.ActiveCfg = Basic_no_opt2005|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Basic_no_opt2005|Win32.Build.0 = Basic_no_opt2005|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Debug2005|Win32.ActiveCfg = Debug2005|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Debug2005|Win32.Build.0 = Debug2005|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Release2005|Win32.ActiveCfg = Release2005|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Release2005|Win32.Build.0 = Release2005|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

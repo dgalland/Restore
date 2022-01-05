@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!DOCTYPE CodeBlocks_project_file>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="1"/>
+	<Project>
+		<Option title="DePanEstimate"/>
+		<Option makefile="Makefile"/>
+		<Option makefile_is_custom="0"/>
+		<Option default_target="-1"/>
+		<Option active_target="0"/>
+		<Option compiler="1"/>
+		<Build>
+			<Target title="Win32 Release">
+				<Option output="Release\DePanEstimate.dll"/>
+				<Option working_dir="."/>
+				<Option object_output="Release"/>
+				<Option deps_output=".deps"/>
+				<Option type="3"/>
+				<Option compiler="1"/>
+				<Option createDefFile="1"/>
+				<Option createStaticLib="1"/>
+				<Compiler>
+					<Add option="/MT"/>
+					<Add option="/W3"/>
+					<Add option="/GX"/>
+					<Add option="/O2"/>
+					<Add option="/DWIN32"/>
+					<Add option="/DNDEBUG"/>
+					<Add option="/D_WINDOWS"/>
+					<Add option="/D_MBCS"/>
+					<Add option="/D_USRDLL"/>
+					<Add option="/DDePanEstimate_EXPORTS"/>
+					<Add option="/YX"/>
+					<Add option="/G7"/>
+					<Add option="/TP"/>
+				</Compiler>
+			</Target>
+			<Target title="Win32 Debug">
+				<Option output="Debug\DePanEstimate.dll"/>
+				<Option working_dir="."/>
+				<Option object_output="Debug"/>
+				<Option deps_output=".deps"/>
+				<Option type="3"/>
+				<Option compiler="1"/>
+				<Option createDefFile="1"/>
+				<Option createStaticLib="1"/>
+				<Compiler>
+					<Add option="/MTd"/>
+					<Add option="/W3"/>
+					<Add option="/Gm"/>
+					<Add option="/GX"/>
+					<Add option="/ZI"/>
+					<Add option="/Od"/>
+					<Add option="/DWIN32"/>
+					<Add option="/D_DEBUG"/>
+					<Add option="/D_WINDOWS"/>
+					<Add option="/D_MBCS"/>
+					<Add option="/D_USRDLL"/>
+					<Add option="/DDePanEstimate_EXPORTS"/>
+					<Add option="/YX"/>
+					<Add option="/FD"/>
+					<Add option="/GZ"/>
+					<Add option="/G6"/>
+					<Add option="/MDd"/>
+					<Add option="/TP"/>
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="avisynth.h">
+			<Option compilerVar=""/>
+			<Option compile="0"/>
+			<Option link="0"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="depanestimate.cpp">
+			<Option compilerVar="CPP"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="depanestimate.rc">
+			<Option compilerVar="WINDRES"/>
+			<Option objectName="depanestimate.res"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="depanio.cpp">
+			<Option compilerVar="CPP"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="depanio.h">
+			<Option compilerVar=""/>
+			<Option compile="0"/>
+			<Option link="0"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="estimate_fftw.cpp">
+			<Option compilerVar="CPP"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="estimate_fftw.h">
+			<Option compilerVar=""/>
+			<Option compile="0"/>
+			<Option link="0"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="fftwlite.h">
+			<Option compilerVar=""/>
+			<Option compile="0"/>
+			<Option link="0"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+		<Unit filename="info.cpp">
+			<Option compilerVar="CPP"/>
+			<Option target="Win32 Release"/>
+			<Option target="Win32 Debug"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

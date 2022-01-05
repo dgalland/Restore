@@ -1,0 +1,458 @@
+==============================================================================
+Film restoring script help file by videoFred
+june 2012
+www.super-8.be
+info@super-8.be
+==============================================================================
+
+Script thread:
+http://forum.doom9.org/showthread.php?t=144271
+===============================================
+
+
+
+
+
+1) How to use Avisynth scripts.
+--------------------------------
+
+You must learn some Avisynth basics first before using any script.
+www.avisynth.org
+
+
+A very easy way to use Avisynth scripts is by using VirtualDubMod.
+VirtualDubMod has a build-in Avisynth script editor.
+Download: http://virtualdubmod.sourceforge.net/
+
+When an Avisynth script is loaded in VDMod you will see the result of the script, as a video file.
+To see the script in the editor, push ctrl+E. The script pops up in a new window.
+You can modify it and when still in the editor window, push f7.
+The modified script is saved and reloaded in VDMod.
+So you see the changes at once without leaving VDMod.
+
+====================================================================================================
+
+
+2) Where to place all the files and plugins.
+--------------------------------------------
+
+See the installing help file
+
+
+3) What script to use
+----------------------
+
+See the installing help file
+
+
+4) Film restoring script - general.
+-----------------------------------
+
+I have made this script to improve my transfered 8mm film files.
+My transfer system can be found here: www.super-8.be
+An example clip of what the script can do: http://www.vimeo.com/2823934
+All my clips: http://www.vimeo.com/user678523/videos/sort:newest
+
+
+******************************************************************************************************
+******************************************************************************************************
+IMPORTANT!!
+
+The script needs a good quality digital film transfer file to begin with. 
+The file must be frame accurate: one film frame = one AVI frame.
+
+The script will not work good if the original file contains duplicate frames.
+It will also not work good if the original file is interlaced.
+You will have to remove interlacing and/or duplicate frames before using my script.
+
+You will also have to remove any black borders, because these are messing up the auto-levels results
+
+******************************************************************************************************
+******************************************************************************************************
+
+This script is not made to work with old low resolution film-to-video transfers.
+To improve VHS and other formats, there are other solutions available.
+
+See this exellent thread:
+http://forum.doom9.org/showthread.php?t=161493
+
+But if the original film is still available, please consider a new transfer.
+
+===================================================================================================
+
+
+
+
+5) Filter chain of the script
+------------------------------------
+
+  1) open the file, change play speed, trim begin, trim end, convert to YV12.
+  2) stabilizing with DepanStablize(), deflickering with Deflicker(), cropping.
+  3) color correction, gamma correction, saturation correction.
+  4) removing dirt spots with RemovedirtMC followed by two sharpening steps with Unsharpmask()
+  5) resizing with Lanczos4Resize()
+  6) degraining with MVDegrainMulti() followed by third sharpening step with Unsharpmask().
+
+  7) Frame_Interpolation script: final frame rate by interpolation with MFlowFPS(), final sharpening with Sharpen()
+  7) Frame_Blending script:  final frame rate with frame blending, using BlendFPS() (from the motion_25 package), final sharpening with Sharpen().
+
+  8) Finaly, to reduce the sharpening effects, adding some blur with blur().
+
+Sharpening should be done in small steps, starting with the biggest radius.
+But this is done automatically by the script.
+The only parameters to be set are the start radius and the strenght.
+
+All denoising and sharpening steps can be disabled by setting the parameters to zero.
+The same for blur.
+
+
+
+
+6) Film restoring script - parameters.
+--------------------------------------
+
+All parameters are placed in variables, they are all placed together on top of the script.
+Do not change the names from the parameters! Only change the values.
+These values are always numbers, except for 'result' and 'film'.
+
+The header of the script is clearly marked.
+Please do not change the script itself, unless you know what you are doing.
+
+FILM:
+-----
+Here you must place the source clip. The full path is required.
+The source can be anywhere on your computer, even on an external harddrive.
+
+
+
+=====================================================================================================
+# OUTPUT PARAMETERS.
+=====================================================================================================
+
+
+RESULT
+-------
+
+I have placed this variable at the top of the script.
+So you can change this very fast to see the different results and/or comparisons.
+
+All outputs are stabilized, denoised, resized, cropped and sharpened depending on the parameters.
+Gamma correction, saturation, play speed and frame rate convertion is also applied on all outputs.
+
+Some parameters will only have effect when returning the proper "result"
+For example color settings "blue" and "red" will have no effect when returning "result1".
+
+ result= "result1": both autolevels and autowhite 
+ result= "result2": manual levels, autowhite
+ result= "result3": autolevels, manual color correction
+ result= "result4": manual levels, manual color correction
+ result= "result5": internal service clip, no need to use this.
+
+
+
+RESULTS: COMPARISONS
+--------------------
+
+It is very useful to see comparisons between the original and the modfied clip.
+Because the script is using stackhorizontal() for this, both clips must have the same size and frame rate.
+In some cases it is possible that the source file is not displayed with the correct aspect ratio.
+For example when cropping/resizing a 4:3 clip to 16:9 with or without black borders.
+In that case, you will have to change the size of "source4" but please only do this if you know what you are doing.
+
+ 
+
+ result= "resultS1": comparisons: original vs modified clips: options S1,S2,S3, and S4
+
+ result= "resultS5": comparison between result3 and result4.
+ result= "resultS6": comparison between result1 and result2. 
+
+ result= "resultS7": special comparison clip to test the stabiliser.
+
+
+
+
+
+
+=====================================================================================================
+# TRIM, PLAY SPEED AND FRAME RATE PARAMETERS
+=====================================================================================================
+
+TRIM_BEGIN
+------------
+Add here the number of frames you want to remove from the beginning of the clip.
+This is very useful on large clips, to check fast a certain point.
+If you do not want to trim frames, add 0 here.
+
+TRIM_END
+----------
+This should be obvious.
+
+PLAY_SPEED
+----------
+Your input file can have any play speed, this parameter will change it.
+
+
+FRAME_INTERPOLATION SCRIPT: NUMERATOR, DENUMERATOR
+--------------------------------------------------
+Please do not confuse this with play_speed.
+This is the final frame rate for the output.
+It will create intermediate interpolated frames.
+Sometimes it is great for panning scenes etc.
+Sometimes it fails on very fast moving objects.
+If this is the case, use the frame_blending script instead.
+
+FrAME_BLENDING SCRIPT: FINAL_FRAMERATE
+---------------------------------------
+Please do not confuse this with play_speed.
+This is the final frame rate for the output.
+BlendFPS() will create frame blending, but only on moving objects.
+
+FRAME_BLENDING SCRIPT: FRAME_BLEND
+----------------------------------
+
+With this parameter you can set the amound of frame blending.
+
+
+A few examples:
+---------------
+
+Assumed we have a one film frame = one AVI frame file:
+
+*Super-8 to standard PAL*
+-------------------------- 
+Interpolation script:  play_speed= 18, numerator= 25, denumerator= 1
+Blending script: final_framerate= 25
+
+the play speed will be 18fps, the output will be 25fps progessive
+A standard Mpeg2 encoder will add no duplicates but will interlace it.
+If you do not want interlacing, set the Mpeg2 encoder output to progressive.
+
+
+*Super-8 to standard PAL without frame rate conversion*
+----------------------------------------------------------
+Interpolation script:  play-speed=18, numerator=18, denumerator= 1
+Blending script: final_framerate= 18
+
+the play speed will be 18fps, the output will be 18fps progressive
+A standard Mpeg2 encoder will add duplicates and interlacing.
+If you do not want interlacing, set the Mpeg2 encoder output to progressive.
+
+
+
+*Super-8 to standard NTSC with interpolation script*
+------------------------------------------------------
+ play_speed= 18, numerator= 30000 denumerator= 1001 
+the play speed will be 18fps, the output will be 30000/1001= 29,97fps progressive
+
+
+*Creating smooth slow motion with interpolation script, standard PAl output*
+----------------------------------------------------------------------------
+ play-speed= 6, numerator= 25, denumerator= 1
+
+
+To disable the interpolation completely:
+----------------------------------------
+Please use the Frame_Blending script instead
+
+
+=========================================================================================================
+# COLOR, GAMMA AND LEVELS PARAMETERS.
+=========================================================================================================
+
+
+SATURATION, GAMMA
+-----------------
+This will change saturation and gamma on all outputs, it is applied before denoising.
+
+BLUE, RED
+---------
+Manual color adjustment, only when returning result3 and result4. It has no effect on the other outputs.
+
+BLACK_LEVEL, WHITE_LEVEL, OUTPUT_BLACK, OUTPUT_WHITE
+----------------------------------------------------
+Manual levels setting, only when returning result4
+This works just like VirtualDubs levels filter.
+
+
+=========================================================================================================
+# AUTO LEVELS PARAMETERS
+=========================================================================================================
+
+AUTOLEV_LOW,  AUTOLEV_HIGH
+--------------------------
+
+This script is using the autolevels filter, modified by Jim Battle (Nickname Frustum on the Doom9 Forum).
+This filter works much better than the old one.
+But sometimes there are still some blown out whites.
+With autolev_high=230 for example we can limit the output to 230.
+
+
+
+
+
+==========================================================================================================
+# SIZE, CROP AND BORDERS PARAMETERS.
+==========================================================================================================
+
+CLeft, CTOP, CRIGHT, CBOTTOM
+----------------------------
+These are the crop values after stabilizing.
+The more stabilizing, the more you will have to crop.
+
+W, H
+------
+Width and height of the final output clip, after stabilizing and cropping.
+The resizing is done with Lanczos4Resize().
+
+BORD_LEFT, BORD_TOP, BORD_RIGHT, BORD_BOT
+-----------------------------------------
+This will add black borders to the clip, after the resizing.
+So the final size will be W + BORD_LEFT + BORD_RIGHT  and H + BORD_TOP + BORD_BOT.
+Avisynth will warn you if the final width and height are against any standard rules.
+
+A hint: make sure that all width and height values are divisible by 16.
+This often fix problems like green frames etc...
+
+
+
+
+=============================================================================================================
+# STABILISATION PARAMETERS.
+=============================================================================================================
+
+IMPORTANT: use resultS7 to see and fine tune the effect of the stabilizer.
+
+
+MAXSTABH, MAXSTABV
+------------------
+Maximum values for the stabilizer, in pixels.
+
+EST_LEFT, EST_TOP, EST_RIGHT, EST_BOTTOM
+-----------------------------------------
+The stabilizer is using a special service clip for the motion estimation.
+You can use any region of the picture for this.
+To understand how this works, return resultS7.
+
+TRUST_VALUE
+-----------
+This is the scene detection parameter from the stabiliser.
+Please return result S7 to check this.
+At scene change you should see BASE! in the right window.
+Increase Trust_value if you do not have scene detection.
+Decrease it if you have false scene detection
+
+CUTOFF_VALUE
+------------
+No need to change this, but you can play with this parameter.
+
+
+================================================================================================================
+# CLEANING PARAMETERS
+================================================================================================================
+
+
+DIRT_STRENGHT
+-------------
+Set this higher to remove more dirt spots. 
+Set it low for relative clean films.
+20 is a good start value.
+
+
+
+
+================================================================================================================
+# DENOISING PARAMETERS.
+================================================================================================================
+
+
+DENOISING_STRENGHT
+-------------------
+Denoising level of the denoiser/degrainer: MVDegrainMulti()
+
+DENOISING_FRAMES
+----------------
+Number of frames for averaging.
+In MVDegrainMulti() one can average multiple frames.
+This can be very useful for removing very heavy grain etc.
+Averaging 3 to 6 frames works very effective.
+
+BLOCK_SIZE,  BLOCK_SIZE_V, BLOCK_OVER
+-------------------------------------
+This will set the blocksize and block overlap in MVDegrainMulti().
+Blocksize=16 and overlap=8 works the best with my 1024x768 source.
+Change it to optimize it for your source.
+
+
+
+
+
+=================================================================================================================
+# SHARPENING PARAMETERS.
+=================================================================================================================
+
+USM_SHARP_NESS, USM_RADI_US
+-------------------------------
+
+This is the start value for the 3-step sharpening.
+The script will automatically add two other steps with lower radius.
+Do not set USM_RADI_US less then 3
+
+
+
+
+
+LAST_SHARP
+----------
+Final sharpening step: Avisynth internal Sharpen() filter.
+It is applied after the UnsharpMask() sharpening.
+It makes the picture more 'crisp'
+Set it to zero if you do not want it.
+
+
+======================================================================================================
+# OTHER PARAMETERS
+======================================================================================================
+
+
+LAST_BLUR
+-------
+All this sharpening might introduce artefacts.
+Adding some blur on the final picture might soften this a bit, without changing the sharpening to much.
+Set to zero if you do not want this blur.
+
+
+
+==================================================================================================================
+# A FEW HINTS
+==================================================================================================================
+
+- The script comes with parameters, optimized for improving (good quality) digitized 8mm film capturings.
+  But of cource it all depends on the used film transfer system.
+
+- I suggest to start with low values for the denoising and sharpening. 
+
+- Sometimes we need DirectShowSource() instead of AviSource() to open a clip.
+
+- Very often, film transfers are already converted to standard PAL or NTSC.
+  You will have to deinterlace and remove duplicate frames first, before using the script.
+  But it is much better to start with a new, frame-to-frame transfer.
+
+- The use of AUTOWHITE: when returning result1 or resultS1, the script will use te "autowhite" function from the
+  internal "ColorYUV" filter. Sometimes this works great, sometimes not. It depends on the source.
+  Please compare yourself.
+
+- VirtualDubMod is perfect for the use with Avisynth scripts, because it has a build in Avisynth editer.
+=================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+

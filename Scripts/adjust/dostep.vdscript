@@ -1,4 +1,4 @@
-VirtualDub.Log(U"d:\RestoreGit\Films\clean\02_01.avi"); 
+VirtualDub.Log(U"d:\Restore\Films\clean\03.avi"); 
 VirtualDub.Open("dostep.avs"); 
 VirtualDub.audio.SetSource(1);
 VirtualDub.audio.SetMode(0);
@@ -25,4 +25,4 @@ VirtualDub.video.filters.BeginUpdate();
 VirtualDub.video.filters.Clear();
 VirtualDub.video.filters.EndUpdate();
 VirtualDub.audio.filters.Clear();
-VirtualDub.SaveAVI(U"d:\RestoreGit\Films\adjust\02_01.avi"); 
+VirtualDub.SaveAVI(U"d:\Restore\Films\adjust\03.avi"); 

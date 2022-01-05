@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="mvtools" />
+		<Option pch_mode="0" />
+		<Option compiler="msvctk" />
+		<Build>
+			<Target title="Release">
+				<Option output="..\mvtools2.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="Release" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/MT" />
+					<Add option="/GL" />
+					<Add option="/G7" />
+					<Add option="/GX" />
+					<Add option="/O2" />
+					<Add option="/W3" />
+					<Add option="/FD" />
+					<Add option="/EHsc" />
+					<Add option="/DWIN32" />
+					<Add option="/DNDEBUG" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_MBCS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DMVTOOLS_EXPORTS" />
+					<Add option="/DFORCE_INLINE" />
+				</Compiler>
+			</Target>
+			<Target title="Debug">
+				<Option output="..\mvtools2debug.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="Debug" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/MTd" />
+					<Add option="/Od" />
+					<Add option="/W3" />
+					<Add option="/EHsc" />
+					<Add option="/DWIN32" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_MBCS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DMVTOOLS_EXPORTS" />
+					<Add option="/D_DEBUG" />
+				</Compiler>
+			</Target>
+			<Target title="Profile">
+				<Option output="..\mvtools2.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="Release" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/MT" />
+					<Add option="/GL" />
+					<Add option="/G7" />
+					<Add option="/GX" />
+					<Add option="/O2" />
+					<Add option="/W3" />
+					<Add option="/FD" />
+					<Add option="/EHsc" />
+					<Add option="/Zi" />
+					<Add option="/DWIN32" />
+					<Add option="/DNDEBUG" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_MBCS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DMVTOOLS_EXPORTS" />
+				</Compiler>
+				<Linker>
+					<Add option="/debug" />
+				</Linker>
+			</Target>
+			<Target title="Basic_no_opt">
+				<Option output="..\mvtools2.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="Release" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/MT" />
+					<Add option="/G7" />
+					<Add option="/GX" />
+					<Add option="/W3" />
+					<Add option="/FD" />
+					<Add option="/EHsc" />
+					<Add option="/DWIN32" />
+					<Add option="/DNDEBUG" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_MBCS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DMVTOOLS_EXPORTS" />
+				</Compiler>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="Release;" />
+		</VirtualTargets>
+		<Linker>
+			<Add option="/BASE:0x10100000" />
+		</Linker>
+		<Unit filename="..\Documentation\mvtools2-rus.html" />
+		<Unit filename="..\Documentation\mvtools2.html" />
+		<Unit filename="Bilinear.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="CopyCode.cpp" />
+		<Unit filename="CopyCode.h" />
+		<Unit filename="CopyCode_mmx.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="FakeBlockData.cpp" />
+		<Unit filename="FakeGroupOfPlanes.cpp" />
+		<Unit filename="FakePlaneOfBlocks.cpp" />
+		<Unit filename="GroupOfPlanes.cpp" />
+		<Unit filename="GroupOfPlanes.h" />
+		<Unit filename="Interface.cpp" />
+		<Unit filename="Interpolation.cpp" />
+		<Unit filename="Interpolation.h" />
+		<Unit filename="MVAnalyse.cpp" />
+		<Unit filename="MVAnalyse.h" />
+		<Unit filename="MVBlockFps.cpp" />
+		<Unit filename="MVBlockFps.h" />
+		<Unit filename="MVClip.cpp" />
+		<Unit filename="MVCompensate.cpp" />
+		<Unit filename="MVCompensate.h" />
+		<Unit filename="MVDegrain1.cpp" />
+		<Unit filename="MVDegrain1.h" />
+		<Unit filename="MVDegrain2.cpp" />
+		<Unit filename="MVDegrain2.h" />
+		<Unit filename="MVDegrain3.cpp" />
+		<Unit filename="MVDegrain3.h" />
+		<Unit filename="MVDepan.cpp" />
+		<Unit filename="MVDepan.h" />
+		<Unit filename="MVFilter.cpp" />
+		<Unit filename="MVFinest.cpp" />
+		<Unit filename="MVFinest.h" />
+		<Unit filename="MVFlow.cpp" />
+		<Unit filename="MVFlow.h" />
+		<Unit filename="MVFlowBlur.cpp" />
+		<Unit filename="MVFlowBlur.h" />
+		<Unit filename="MVFlowFps.cpp" />
+		<Unit filename="MVFlowFps.h" />
+		<Unit filename="MVFlowInter.cpp" />
+		<Unit filename="MVFlowInter.h" />
+		<Unit filename="MVFrame.cpp" />
+		<Unit filename="MVInterface.h" />
+		<Unit filename="MVMask.cpp" />
+		<Unit filename="MVMask.h" />
+		<Unit filename="MVRecalculate.cpp" />
+		<Unit filename="MVRecalculate.h" />
+		<Unit filename="MVSCDetection.cpp" />
+		<Unit filename="MVSCDetection.h" />
+		<Unit filename="MVShow.cpp" />
+		<Unit filename="MVShow.h" />
+		<Unit filename="MVSuper.cpp" />
+		<Unit filename="MVSuper.h" />
+		<Unit filename="MaskFun.cpp" />
+		<Unit filename="MaskFun.h" />
+		<Unit filename="Overlap_mmx.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="Padding.cpp" />
+		<Unit filename="Padding.h" />
+		<Unit filename="PlaneOfBlocks.cpp" />
+		<Unit filename="PlaneOfBlocks.h" />
+		<Unit filename="SADFunctions.h" />
+		<Unit filename="SAD_iSSE.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="SimpleResize.cpp" />
+		<Unit filename="SimpleResize.h" />
+		<Unit filename="Variance.cpp" />
+		<Unit filename="Variance.h" />
+		<Unit filename="Variance_iSSE.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="avisynth.h" />
+		<Unit filename="commonfunctions.h" />
+		<Unit filename="cpu-32.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="cpu.cpp" />
+		<Unit filename="cpu.h" />
+		<Unit filename="dct.h" />
+		<Unit filename="dctfftw.cpp" />
+		<Unit filename="dctfftw.h" />
+		<Unit filename="dctint.cpp" />
+		<Unit filename="dctint.h" />
+		<Unit filename="fdct_mmx.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="fftwlite.h" />
+		<Unit filename="info.h" />
+		<Unit filename="mvtools.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="overlap.cpp" />
+		<Unit filename="overlap.h" />
+		<Unit filename="pixel-32.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="pixel-a.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="sad-a.asm">
+			<Option compiler="msvctk" use="1" buildCommand="nasmw -f win32 -DPREFIX -o $object $file" />
+		</Unit>
+		<Unit filename="version.h" />
+		<Unit filename="yuy2planes.cpp" />
+		<Unit filename="yuy2planes.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

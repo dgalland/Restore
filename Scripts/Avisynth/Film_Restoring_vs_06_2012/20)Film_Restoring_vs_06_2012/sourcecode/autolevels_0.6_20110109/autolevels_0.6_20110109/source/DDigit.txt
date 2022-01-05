@@ -1,0 +1,130 @@
+DDigit Plugin Text Rendering Pack for Plugin writers.
+
+
+NOTE, the Files:-
+
+	DDigit.h
+	DDigit.cpp
+
+	Are derived from the fairly standard Avisynth Info.h file which included
+	font and plugin string rendering functions. Info.h has been split
+	up with some items renamed and functions and other things added.
+	The sole purpose of this is to try to bring together some kind of
+	standard plugin text rendering package for all color spaces, together
+	with optional Hi-liting of some text. 16 color text rendering has been
+	implemented in RGB 24/32, YUY2, YV12 ColorSpaces. In addition, vertical
+	printing of strings has been added.
+		The DDigit pack as here supplied, also finally implements bounds
+	checking, was really annoying when metrics wrapping off screen caused
+	crashes, this will not longer happen.
+
+	  There is nothing whatever wrong with the original Info.h, but at some time
+	they changed using character coords to pixel coords, not a major problem
+	on its own, but would prefer pack that has option to both. Also, if you
+	take your info.h file from various plugins source, they tend to be different,
+	and do not implement all color spaces. With this pack, authors are incouraged to
+	not hack out any code, the defines make that unnecessary, and so anyone who
+	uses ddigit from your source should have the complete pack.
+	
+	The basic rendering methods for the different color spaces were shamelessly pilfered
+	from Avisynth v2.5.8 source, where it looks like the developers had in mind the
+	ability print in eg YV12, Y8, YV16 YV24, YV411, all using the same code, I have
+	tried to maintain the same basic method and believe that the DDigit routines should
+	work OK in Avisynth v2.6 plugins compiled using a version 5 Avisynth.h header.
+	I was not able to get it to link, I believe that v2.6 plugins may need to
+	be linked to some avisynth v2.6 library, which I do not have.
+	Trying the included Avisynth v2.5 DDigitTest.DLL in an AVS script eg:
+
+	source=....
+	ConvertToY8()
+	DDigitTest()
+	convertToRGB32()	# So we can see results
+	return Last
+
+	Works just fine on v2.6, but the others eg YV24, print the Luma correctly but
+	the chroma prints much smaller, due to the Avisynth v2.5 header giving the rowsize
+	etc for YV12. If anyone manages to get a working plugin using this source, let us all
+	know if it performs properly, think it should.
+
+	The only really small problem I see is that there has been no attempt to cope with
+	any special color palette for Y8, so you would get whatever luma value any
+	particular color would have had (and they are not in ascending order of value).
+
+	Further on color, the colors took a fair bit of time to select, it aint easy finding
+	ones that dont look rubbish under YV12. However, all colors chosen look pretty good
+	with the exception of one, DDIGIT_ORANGERED which is a bit blurry BUT was chosen
+	as a sort catastrophic error denoting color and so is not expected to be used
+	frequently.
+
+	To use the DDigit source, both DDigit.h and DDigit.cpp MUST be used.
+
+To configure DDigit, Edit the lines contained at the beginning of the DDigit.H
+file:-
+
+
+// -------------------------------------------------------------------------
+//  !!! Below lines configure DDIGIT, Edit as required !!!
+
+#define DDIGIT_ENABLE_SUPPORT_PLANAR		// Enable PLANAR eg YV12 Support
+#define DDIGIT_ENABLE_SUPPORT_YUY2		// Enable YUY2 Support
+#define DDIGIT_ENABLE_SUPPORT_RGB		// Enable RGB24 & RGB32 Support
+
+#define DDIGIT_INCLUDE_DRAWSTRING_FUNCTIONS	// Print Strings @ Pixel Coords
+#define DDIGIT_INCLUDE_DRAWSTRING_VERTICAL	// Print Vertical Strings @ Pixel Coords
+#define DDIGIT_INCLUDE_DRAWSTR_FUNCTIONS	// Print Strings @ Character Coords
+#define DDIGIT_INCLUDE_DRAWSTR_VERTICAL		// Print Vertical Strings @ Character Coords
+// -------------------------------------------------------------------------
+
+
+These should all be enabled by default and can be commented out on a by
+need basis. There is no need to edit out any unused, color space code,
+the above defines will achieve the removal of code.
+
+
+// Draw EXT ASCII string at [x,y] PIXEL or CHARACTER coords with color[16] selection
+// of forground. pix==true = pixel coords: vert==true = Vertical (top down printing).
+
+extern void __stdcall DDigitS(const VideoInfo &vi,PVideoFrame &dst,int x,int y,int color, \
+	const bool pix,const bool vert,const char *s);
+
+
+DDigitS() is the lo level Monolithic core of DDigit. It implements printing at pixel and character
+coordinates, both horizontally and vertically in 16 different colors for strings. There
+is no individual routine for printing lone characters, only strings are handled.
+
+The above defines eg: DDIGIT_INCLUDE_DRAWSTRING_FUNCTIONS make available stub routines
+which just make the calling of DDigitS() a little easier, in this case it makes available
+3 overloaded routines for printing text at pixel positions, horizontally, ie:
+
+DrawString(const VideoInfo &vi,PVideoFrame &dst,int x,int y,int color,const char *s);
+DrawString(const VideoInfo &vi,PVideoFrame &dst,int x,int y,const char *s);
+DrawString(const VideoInfo &vi,PVideoFrame &dst,int x,int y,bool hilite,const char *s);
+
+where you can call the stub with no color argument (defaults to white), with a bool
+to denote hilite ON/OFF status (hi-lite ON in Orange), or with an int to denote
+a color index 0-15. The 1st stub above is implemented as so:-
+
+	void __stdcall DrawString(const VideoInfo &vi,PVideoFrame &dst,int x,int y,int color,const char *s) {
+		DDigitS(vi,dst, x, y, color ,true,false, s)	;// color is an index
+	}
+
+so there is no iterative calling of DDigitS() to render strings, DDigitS, does it all and
+the overhead of the DrawString() type stubs is so small as to make it unnecessary to
+disable them, even if you dont use them, but the option is there.
+
+Anyway, take a look at the DDigit.H header file for further info.
+
+If you mistakenly call DDigitS() for a colorspace that has not being enabled, then
+nothing will happen, ie it will not crash, it just will not do anything.
+
+Also included, a 'throw away' plugin that just shows DDigit in action,
+nothing special and could probably do with a code clean up but it does the job.
+If you do take a look at it, dont forget to remove it from your plugins directory
+afterwards. Plugin name "DDigitTest.DLL", no arguments.
+
+
+Anyways, hope you find a use for it.
+
+StainlessS @ Doom9.
+
+

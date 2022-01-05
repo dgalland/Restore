@@ -1,0 +1,23 @@
+1 VERSIONINFO
+FILEVERSION 0, 6, 0, 0
+PRODUCTVERSION 0, 6, 0, 0
+FILEFLAGSMASK 0
+FILEOS 0x40000
+FILETYPE 1
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "Copyright 2007 Theodor Anschütz; modifications by Jim Battle, 2010"
+   VALUE "FileDescription", "Autolevels plugin for Avisynth 2.5"
+   VALUE "FileVersion", "0.6"
+   VALUE "InternalName", "autolevels"
+   VALUE "LegalCopyright", "(c) 2007 Theodor Anschütz"
+   VALUE "OriginalFilename", "autolevels.dll"
+   VALUE "ProductName", "autolevels filter"
+   VALUE "ProductVersion", "0.6"
+   VALUE "Comments", "Temporally smoothed automatic luma level adjustment. Licensed under GNU GPL v.2"
+  }                                                                      
+ }
+}

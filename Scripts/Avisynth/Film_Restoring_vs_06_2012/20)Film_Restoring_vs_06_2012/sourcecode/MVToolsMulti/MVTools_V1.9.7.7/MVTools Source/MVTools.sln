@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{EAF909A5-FA59-4C3D-9431-0FCC20D5BCF9}") = "mvtools", "mvtools.icproj", "{AE434044-7FAE-49C3-A60B-02EC665EF75E}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = mvtools.icproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = mvtools.vcproj
+		SccProjectTopLevelParentUniqueName2 = mvtools.icproj
+		SccLocalPath2 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE434044-7FAE-49C3-A60B-02EC665EF75E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AE434044-7FAE-49C3-A60B-02EC665EF75E}.Debug|Win32.Build.0 = Debug|Win32
+		{AE434044-7FAE-49C3-A60B-02EC665EF75E}.Release|Win32.ActiveCfg = Release|Win32
+		{AE434044-7FAE-49C3-A60B-02EC665EF75E}.Release|Win32.Build.0 = Release|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Debug|Win32.Build.0 = Debug|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Release|Win32.ActiveCfg = Release|Win32
+		{E9BEFD98-715B-40C8-A1F1-1F302DF0B32B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
